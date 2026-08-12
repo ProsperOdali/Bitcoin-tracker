@@ -3,13 +3,13 @@ import pandas as pd
 
 API_URL = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30"
 
-def fetch_data() -> requests.json:
+def fetch_data()
     r = requests.get(API_URL, timeout=30)
     r.raise_for_status()
     return r.json()
 
 
-def build_dataframe(data: requests.json) -> pd.DataFrame:
+def build_dataframe(data) -> pd.DataFrame:
     prices = data["prices"]
     market_caps = data["market_caps"]
     total_volumes = data["total_volumes"]
