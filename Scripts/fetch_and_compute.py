@@ -3,13 +3,13 @@ import pandas as pd
 
 API_URL = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30"
 
-def fetch_data():
+def fetch_data() -> requests.json:
     r = requests.get(API_URL, timeout=30)
     r.raise_for_status()
     return r.json()
 
 
-def build_dataframe(data):
+def build_dataframe(data: requests.json) -> pd.DataFrame:
     prices = data["prices"]
     market_caps = data["market_caps"]
     total_volumes = data["total_volumes"]
@@ -36,7 +36,7 @@ def build_dataframe(data):
     return df
 
 
-def save_csv(df):
+def save_csv(df) -> None:
     df.to_csv("data/bitcoin_market_data.csv", index=False)
     print("CSV saved → data/bitcoin_market_data.csv")
     print(f"Rows: {len(df)}")

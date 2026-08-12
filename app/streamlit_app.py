@@ -7,7 +7,7 @@ from datetime import datetime
 # Config
 st.set_page_config(page_title="BTC Live Dashboard", page_icon="₿", layout="wide")
 st.title("₿ Bitcoin Live Dashboard")
-st.caption("All metrics calculated & updated every hour • Powered by GitHub Actions")
+st.caption("All metrics calculated & updated every hour by GitHub Actions")
 
 # Raw CSV URL — change only if you rename the file or folder
 # PUT THE EXACT RAW URL YOU COPIED HERE
@@ -97,15 +97,15 @@ with st.expander("Show Raw Data Table (latest 100 rows)"):
     display_df = df.tail(100).copy()
     display_df['timestamp'] = display_df['timestamp'].dt.strftime("%Y-%m-%d %H:%M")
     st.dataframe(display_df.style.format({
-        'price': '${:,.2f}',
-        'market_cap': '${:,.0f}',
-        'total_volume': '${:,.0f}',
+        'price': '${:,.3f}',
+        'market_cap': '${:,.3f}',
+        'total_volume': '${:,.3f}',
         'returns': '{:+.4f}%',
-        'volatility': '{:.2f}%',
-        'ma_7': '${:,.0f}',
-        'ma_21': '${:,.0f}'
+        'volatility': '{:.3f}%',
+        'ma_7': '${:,.3f}',
+        'ma_21': '${:,.3f}'
     }))
 
 # Footer
 st.markdown("---")
-st.markdown("Built with ❤️ by ProsperOdal • Hosted free on Streamlit • Data auto-updated hourly")
+st.markdown("Built with by ProsperOdali • Hosted free on Streamlit • Data auto-updated hourly")
